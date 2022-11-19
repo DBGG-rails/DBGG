@@ -1,0 +1,11 @@
+<% @sorting_name.each do |character| %>
+      <tr>
+        <td><%= character.name %></td>
+		<td><%= character.cost %></td>
+        <td><%= character.synergy %></td>
+		<td><%= button_to "툴에 넣기", tools_path(tool: { character_id: character.id}) %></td>
+        <td><%= link_to 'Show', character %></td>
+        <td><%= link_to 'Edit', edit_character_path(character) %></td>
+        <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>`

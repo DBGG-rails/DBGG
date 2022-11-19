@@ -4,8 +4,50 @@ class CharactersController < ApplicationController
   # GET /characters or /characters.json
   def index
     @characters = Character.all
+	  
+	@synergies = Synergy.all
+	  
 	@tool_lists = Tool.all
+	  
+	@tool_synergy = []
+	  
+	@tool_lists.each do |tool| 
+		@tool_synergy.push(Character.find(tool.character_id).synergy)
+		@tool_synergy.push(Character.find(tool.character_id).synergy2)
+		@tool_synergy.push(Character.find(tool.character_id).synergy3)
+	end
 	
+	# @synergies.each do |ss|
+	# 	ss.s_count = 0
+	# end
+	  
+	# @synergies_1 = 0
+	# @synergies_2 = 0
+	# @synergies_3 = 0
+	# @synergies_4 = 0
+	# @synergies_5 = 0
+	# @synergies_6 = 0
+	# @synergies_7 = 0
+	# @synergies_8 = 0
+	# @synergies_9 = 0
+	# @synergies_10 = 0
+	# @synergies_11 = 0
+	# @synergies_12 = 0
+	# @synergies_13 = 0
+	  
+	
+	@synergies.each do |ss|
+		ss.s_count = 0
+	end
+	  
+	
+	@synergies.each do |synergy|
+		@tool_synergy.each do |s|
+			if synergy.s_name == s
+				synergy.s_count = synergy.s_count+1
+			end
+		end
+	end
   end
 
   # GET /characters/1 or /characters/1.json
@@ -20,6 +62,8 @@ class CharactersController < ApplicationController
   # GET /characters/1/edit
   def edit
   end
+	
+
 
   # POST /characters or /characters.json
   def create
@@ -67,6 +111,6 @@ class CharactersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def character_params
-      params.require(:character).permit(:name, :synergy, :cost, :avatar)
+      params.require(:character).permit(:name, :synergy, :synergy2, :synergy3, :cost, :avatar)
     end
 end

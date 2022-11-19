@@ -1,6 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <h1>배치툴</h1>
+<h2>시너지</h2>
+적용 시너지 : <% @tool_synergy.each do |s| %>
+  <tr>
+    <td><%= s %></td>
+  </tr>
+<% end %>
+<br/>
+
+<% @synergies.each do |synergy| %>
+	<% if synergy.s_count > 0 %>
+		<%= synergy.s_name %>
+		<%= synergy.s_count %>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <table>
   <thead>
@@ -26,22 +54,25 @@
 
 <h1>캐릭터</h1>
 
-<table>
+<table id='inventory'>
   <thead>
     <tr>
-      <th>이름</th>
-      <th>시너지</th>
-      <th>가격</th>
+      <th onclick='sortTable(0)'>이름</th>
+	  <th onclick='sortTable(1)'>가격</th>
+      <th onclick='sortTable(2)'>시너지</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
-
+  </thead>	
   <tbody>
     <% @characters.each do |character| %>
       <tr>
         <td><%= character.name %></td>
-        <td><%= character.synergy %></td>
-        <td><%= character.cost %></td>
+		<td><%= character.cost %></td>
+        <td>
+			<%= character.synergy %>
+			<%= character.synergy2 %>
+			<%= character.synergy3 %>
+		</td>
 		<td><%= button_to "툴에 넣기", tools_path(tool: { character_id: character.id}) %></td>
         <td><%= link_to 'Show', character %></td>
         <td><%= link_to 'Edit', edit_character_path(character) %></td>
@@ -54,3 +85,72 @@
 <br>
 
 <%= link_to 'New Character', new_character_path %>
+
+<h1>Synergies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>S name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @synergies.each do |synergy| %>
+      <tr>
+        <td><%= synergy.s_name %></td>
+        <td><%= link_to 'Show', synergy %></td>
+        <td><%= link_to 'Edit', edit_synergy_path(synergy) %></td>
+        <td><%= link_to 'Destroy', synergy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Synergy', new_synergy_path %>
+
+<script>
+	function sortTable(n) {
+		var table, rows, switching, o, x, y, shouldSwitch, dir, switchcount = 0;
+			table = document.getElementById("inventory");
+			switching = true;
+			dir = 'asc';
+
+		while (switching) {
+			switching = false;
+			rows = table.getElementsByTagName('TR');
+
+			for (o = 1; o < (rows.length - 1); o++){
+				shouldSwitch = false;
+				x = rows[o].getElementsByTagName('TD')[n];
+				y = rows[o+1].getElementsByTagName('TD')[n];
+
+				if (dir == 'asc') {
+					if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+						shouldSwitch = true;
+						break;
+					}
+				}else if (dir == 'desc'){
+					if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+						shouldSwitch = true;
+						break;
+					}
+				}
+			}
+
+			if (shouldSwitch) {
+				rows[o].parentNode.insertBefore(rows[o+1], rows[o]);
+				switching = true;
+				switchcount ++;
+			}else {
+				if (switchcount == 0 && dir == 'asc') {
+					dir = 'desc';
+					switching = true;
+				}
+			}
+		}
+	}
+</script>
