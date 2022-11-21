@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_19_124205) do
+ActiveRecord::Schema.define(version: 2022_11_21_043226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 2022_11_19_124205) do
     t.string "avatar"
     t.string "synergy2"
     t.string "synergy3"
+  end
+
+  create_table "mains", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "synergies", force: :cascade do |t|

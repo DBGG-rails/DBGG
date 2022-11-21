@@ -25,7 +25,7 @@ class ToolsController < ApplicationController
 
     respond_to do |format|
       if @tool.save
-        format.html { redirect_to root_path, notice: "툴에 추가 완료!" }
+        format.html { redirect_to characters_url, notice: "툴에 추가 완료!" }
         format.json { render :show, status: :created, location: @tool }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class ToolsController < ApplicationController
     @tool.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "삭제 하였습니다." }
+      format.html { redirect_to characters_url, notice: "삭제 하였습니다." }
       format.json { head :no_content }
     end
   end
