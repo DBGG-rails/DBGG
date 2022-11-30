@@ -19,8 +19,7 @@ p {
 }
 .nav-item > a {
   color: rgb(255, 255, 255);
-  padding-top: 15px;
-  padding-bottom: 15px;
+
   margin-left: 40px;
 }
 .link_to {
@@ -31,7 +30,6 @@ p {
 .link_to > a {
   color: white;
   padding-left: 3%;
-  padding-top: 30px;
 }
 .background {
   height: 100vh;
@@ -279,4 +277,13 @@ margin-left: 30px;
 #you_3,
 #you_4 {
   margin-right: 20px;
+}
+
+#nnnn{
+	width: 500px;
+	margin-right: 3rem;
+}
+#nation{
+	border: 2px solid black;
+	border-radius: 10px;
 }
