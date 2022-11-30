@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -13,187 +11,1139 @@
     />
     <link rel="stylesheet" href="./batch.css" />
   </head>
-  <body>
+  <body id="batch_body">
     <div class="title">
-      <p>롤체지지</p>
+		<a href="/mains"><p>롤체지지</p></a>
     </div>
     <div class="menu_bar">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">배치툴</a>
+          <a class="nav-link" href="/characters">배치툴</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">유튜버가이드</a>
+          <a class="nav-link" href="/synergies">유튜버가이드</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">커뮤니티</a>
         </li>
       </ul>
     </div>
-    <div style="text-align: center">
-      <img src="lol_logo.png" alt="" width="200" />
+    <div class="link_to">
+      <a href="#">LCK 내전으로 펼쳐진 2022 롤드컵 결승 결과는?</a>
     </div>
-	<h1>배치툴</h1>
-    <div class="container">
-      <div class="champhion-slot1">
-        <div class="cs1 1"><%= if @tool_lists.size > 0 
-								image_tag(Character.find(@tool_lists[0].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs1 2"><%= if @tool_lists.size > 1
-								image_tag(Character.find(@tool_lists[1].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs1 3"><%= if @tool_lists.size > 2 
-								image_tag(Character.find(@tool_lists[2].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs1 4"><%= if @tool_lists.size > 3 
-								image_tag(Character.find(@tool_lists[3].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs1 5"><%= if @tool_lists.size > 4 
-								image_tag(Character.find(@tool_lists[4].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs1 6"><%= if @tool_lists.size > 5 
-								image_tag(Character.find(@tool_lists[5].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs1 7"><%= if @tool_lists.size > 6 
-								image_tag(Character.find(@tool_lists[6].character_id).avatar.url)
-								end
-							%></div>
-      </div>
-      <div class="champhion-slot2">
-        <div class="cs2 1"><%= if @tool_lists.size > 7 
-								image_tag(Character.find(@tool_lists[7].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs2 2"><%= if @tool_lists.size > 8 
-								image_tag(Character.find(@tool_lists[8].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs2 3"><%= if @tool_lists.size > 9 
-								image_tag(Character.find(@tool_lists[9].character_id).avatar.url)
-								end
-							%></div>
-        <div class="cs2 4"></div>
-        <div class="cs2 5"></div>
-        <div class="cs2 6"></div>
-        <div class="cs2 7"></div>
-      </div>
-      <div class="champhion-slot3">
-        <div class="cs3 1"></div>
-        <div class="cs3 2"></div>
-        <div class="cs3 3"></div>
-        <div class="cs3 4"></div>
-        <div class="cs3 5"></div>
-        <div class="cs3 6"></div>
-        <div class="cs3 7"></div>
-      </div>
-	  <div class="champhion-slot4">
-        <div class="cs3 1"></div>
-        <div class="cs3 2"></div>
-        <div class="cs3 3"></div>
-        <div class="cs3 4"></div>
-        <div class="cs3 5"></div>
-        <div class="cs3 6"></div>
-        <div class="cs3 7"></div>
-      </div>
+     <div style="text-align: center">
+      <img src="<%= asset_path("lol_logo.png") %>" alt="" width="200" id = 'batch_logo' s/>
     </div>
+   
+   <div class = 'batch_main' id = 'batch_main'>
+	   
+      <div class = 'synergy_alram' id ='synergy_alram'>
+         <br>
+         <% @synergies.each do |synergy| %>
+            <% if synergy.s_count > 0 %>
+               <% if synergy.s_name == '신동' %>
+                  <div>
+					  <img src="<%= asset_path("sindong.png") %>" alt="" width="30"/>
+					  <%= synergy.s_name %>
+					  <span class = 'count_box'>
+					  <span class = 'count_n'>
+					  <%= synergy.s_count %>
+					  </span>
+					  </span>
+		  		  </div>
+               <% end %>
+               <% if synergy.s_name == '별부르미' %>
+                  <div>
+					  <img src="<%= asset_path("star_call.png") %>" alt="" width="30"/>
+					  <%= synergy.s_name %>
+					  <span class = 'count_box'>
+					  <span class = 'count_n'>
+					  <%= synergy.s_count %>
+					  </span>
+                  </span>
+				  </div>
+               <% end %>
+               <% if synergy.s_name == '거석' %>
+                  <div>
+					  <img src="<%= asset_path("gu.png") %>" alt="" width="30"/>
+					  <%= synergy.s_name %>
+					  <span class = 'count_box'>
+					  <span class = 'count_n'>
+					  <%= synergy.s_count %>
+					  </span>
+					  </span>
+				  </div>
+               <% end %>
+               <% if synergy.s_name == '음유시인' %>
+                  <div>
+					  <img src="<%= asset_path("um.png") %>" alt="" width="30"/>
+					  <%= synergy.s_name %>
+					  <span class = 'count_box'>
+					  <span class = 'count_n'>
+					  <%= synergy.s_count %>
+					  </span>
+					  </span>
+				  </div>
+               <% end %>
+               <% if synergy.s_name == '주문도둑' %>
+                  <div>
+					  <img src="<%= asset_path("ju.png") %>" alt="" width="30"/>
+					  <%= synergy.s_name %>
+					  <span class = 'count_box'>
+					  <span class = 'count_n'>
+					  <%= synergy.s_count %>
+					  </span>
+					  </span>
+				  </div>
+               <% end %>
+               <% if synergy.s_name == '포병대' %>
+		  		  <div>
+					  <% if synergy.s_count >=6  %>
+						 <img src="<%= asset_path("po2.png") %>" alt="" width="30"/>
+						 <%= synergy.s_name %>
+						 <span class = 'count_box'>
+						 <span class = 'count_n'>
+							<%= synergy.s_count %>
+						 </span>
+						 </span>
+						 <span class='blank'>"    "</span>
+						 <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+					  <% elsif synergy.s_count >=4 %>
+						 <img src="<%= asset_path("po1.png") %>" alt="" width="30"/>
+						 <%= synergy.s_name %>
+						 <span class = 'count_box'>
+						 <span class = 'count_n'>
+							<%= synergy.s_count %>
+						 </span>
+						 </span>
+						 <span class='blank'>"    "</span>
+						 <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+					  <% elsif synergy.s_count >=2 %>
+						 <img src="<%= asset_path("po.png") %>" alt="" width="30"/>
+						 <%= synergy.s_name %>
+						 <span class = 'count_box'>
+						 <span class = 'count_n'>
+							<%= synergy.s_count %>
+						 </span>
+						 </span>
+						 <span class='blank'>"    "</span>
+						 2<span class ='count_layer'>▶4▶6</span>
+					  <% elsif synergy.s_count <2 %>
+						 <%= synergy.s_name %>
+						 <span class = 'count_box'>
+						 </span>
+						 <span class='blank'>"    "</span>
+						 <span class ='count_layer'><%= synergy.s_count %>/2</span>
+					  <% end %>
+				  </div>
+               <% end %>
+               <% if synergy.s_name == '기병대' %>
+                  <div>
+					<% if synergy.s_count >=6  %>
+						<img src="<%= asset_path("ki4.png") %>" alt="" width="30"/>
+						<%= synergy.s_name %>
+						<span class = 'count_box'>
+						<span class = 'count_n'>
+						<%= synergy.s_count %>
+						</span>
+						</span>
+						<span class='blank'>"    "</span>
+						<%= synergy.s_count %><span class ='count_layer'>▶6</span>
+					<% elsif synergy.s_count >=4 %>
+						<img src="<%= asset_path("ki3.png") %>" alt="" width="30"/>
+						<%= synergy.s_name %>
+						<span class = 'count_box'>
+						<span class = 'count_n'>
+						<%= synergy.s_count %>
+						</span>
+						</span>
+						<span class='blank'>"    "</span>
+						<span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+					<% elsif synergy.s_count >=2 %>
+						<img src="<%= asset_path("ki.png") %>" alt="" width="30"/>
+						<%= synergy.s_name %>
+						<span class = 'count_box'>
+						<span class = 'count_n'>
+						<%= synergy.s_count %>
+						</span>
+						</span>
+						<span class='blank'>"    "</span>
+						2<span class ='count_layer'>▶4▶6</span>
+					<% elsif synergy.s_count <2 %>
+						<%= synergy.s_name %>
+						<span class = 'count_box'>
+						</span>
+						<span class='blank'>"    "</span>
+						<span class ='count_layer'><%= synergy.s_count %>/2</span>
+					<% end %>
+				  </div>
+		  	   <% end %>
+               <% if synergy.s_name == '난동꾼' %>
+                  <div>
+					<% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("nan3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("nan1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("nan.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  		  </div>   
+               <% end %>
+               <% if synergy.s_name == '민첩사수' %>
+                  <div>
+					  <% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("nan2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("min1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("min.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+				  </div>   
+               <% end %>
+               <% if synergy.s_name == '수호자' %>
+                  <div>
+					  <% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("su.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("su2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("su1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+				  </div>   
+               <% end %>
+               <% if synergy.s_name == '신비술사' %>
+                  <div>
+					  <% if synergy.s_count >=4  %>
+                     <img src="<%= asset_path("sin2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count >=3 %>
+                     <img src="<%= asset_path("sin1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>3<span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("sin.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶3▶4</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+				  </div>   
+               <% end %>
+               <% if synergy.s_name == '요술사' %>
+                  <div>
+					  <% if synergy.s_count >=9  %>
+                     <img src="<%= asset_path("yo4.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶9</span>
+                  <% elsif synergy.s_count >=7 %>
+                     <img src="<%= asset_path("yo3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>3▶</span><span class ='count_layer'>5▶</span>7<span class ='count_layer'>▶9</span>
+                  <% elsif synergy.s_count >=5 %>
+                     <img src="<%= asset_path("yo2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>3▶5<span class ='count_layer'>▶7</span><span class ='count_layer'>▶9</span>
+                  <% elsif synergy.s_count >=3 %>
+                     <img src="<%= asset_path("yo1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     3</span><span class ='count_layer'>▶5▶7▶9</span>      
+                  <% elsif synergy.s_count <3 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/3</span>
+                  <% end %>
+				  </div>   
+               <% end %>
+               <% if synergy.s_name == '암살자' %>
+                  <div>
+					  <% if synergy.s_count >=4  %>
+                     <img src="<%= asset_path("am1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("am.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+				  </div>   
+               <% end %>
+               <% if synergy.s_name == '용술사' %>
+                  <div>
+					 <% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("yong_calll3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("yong_calll2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("yong_calll1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %> 
+				  </div>   
+               <% end %>
+               <% if synergy.s_name == '일깨우는자' %>
+                  <div>
+					  <% if synergy.s_count >=4  %>
+                     <img src="<%= asset_path("3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count >=3 %>
+                     <img src="<%= asset_path("2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>3<span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶3▶4</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               
+               <% if synergy.s_name == '전사' %>
+                  <div>
+					  <% if synergy.s_count >=5  %>
+                     <img src="<%= asset_path("me2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶5</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("me3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶5</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("me.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶5</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '형상변환자' %>
+                  <div>
+					  <% if synergy.s_count >=4 %>
+                     <img src="<%= asset_path("bro.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("bro2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '길드' %>
+                  <div>
+					  <% if synergy.s_count >=7  %>
+                     <img src="<%= asset_path("gil3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶7</span>
+                  <% elsif synergy.s_count >=3 %>
+                     <img src="<%= asset_path("gil2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>3<span class ='count_layer'>▶7</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("gil.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶3▶4▶5▶6▶7</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '별' %>
+                  <div>
+					  <% if synergy.s_count >=8  %>
+                     <img src="<%= asset_path("star3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶8</span>
+                  <% elsif synergy.s_count >=5 %>
+                     <img src="<%= asset_path("star2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>3▶</span>5<span class ='count_layer'>▶8</span>
+                  <% elsif synergy.s_count >=3 %>
+                     <img src="<%= asset_path("star.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶5▶8</span>
+                  <% elsif synergy.s_count <3 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/3</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '분노날개' %>
+                  <div>
+					  <% if synergy.s_count >=8  %>
+                     <img src="<%= asset_path("ang4.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶8</span>
+                  <% elsif synergy.s_count >=6 %>
+                     <img src="<%= asset_path("ang3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶4▶</span>6<span class ='count_layer'>▶8</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("ang2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6▶8</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("ang1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6▶8</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/3</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '비늘혐오자' %>
+                  <div>
+					  <% if synergy.s_count >=4 %>
+                     <img src="<%= asset_path("b2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("b.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '비취'%>
+                  <div>
+					  <% if synergy.s_count >=8  %>
+                     <img src="<%= asset_path("bc3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶8</span>
+                  <% elsif synergy.s_count >=5 %>
+                     <img src="<%= asset_path("bc2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>3▶</span>5<span class ='count_layer'>▶8</span>
+                  <% elsif synergy.s_count >=3 %>
+                     <img src="<%= asset_path("bc.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     3<span class ='count_layer'>▶5▶8</span>
+                  <% elsif synergy.s_count <3 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/3</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '빛비늘'%>
+                  <div>
+					  <% if synergy.s_count >=8  %>
+                     <img src="<%= asset_path("bc3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶8</span>
+                  <% elsif synergy.s_count >=5 %>
+                     <img src="<%= asset_path("bc2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>3▶</span>5<span class ='count_layer'>▶8</span>
+                  <% elsif synergy.s_count >=3 %>
+                     <img src="<%= asset_path("bc.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     3<span class ='count_layer'>▶5▶8</span>
+                  <% elsif synergy.s_count <3 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/3</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '석호'%>
+                  <div>
+					  <% if synergy.s_count >=10  %>
+                     <img src="<%= asset_path("suk3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶10</span>
+                  <% elsif synergy.s_count >=6 %>
+                     <img src="<%= asset_path("suk2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>3▶</span>6<span class ='count_layer'>▶10</span>
+                  <% elsif synergy.s_count >=3 %>
+                     <img src="<%= asset_path("suk1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     3<span class ='count_layer'>▶6▶10</span>
+                  <% elsif synergy.s_count <3 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/3</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '속삭임' %>
+                  <div>
+					  <% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("wisper3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("wisper2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("wisper.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '신기루' %>
+                  <div>
+					  <% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("sg3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("sg2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("sg1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '어둠강림' %>
+                  <div>
+					  <% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("dark3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("dark2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("dark.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+               <% if synergy.s_name == '폭풍' %>
+                  <div>
+					<% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("pok3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=4 %>
+                     <img src="<%= asset_path("pok2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>2▶</span>4<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("pok.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     2<span class ='count_layer'>▶4▶6</span>
+                  <% elsif synergy.s_count <2 %>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'><%= synergy.s_count %>/2</span>
+                  <% end %>
+				  </div>
+               <% end %>
+               
+         
+               <% if synergy.s_name == '용' %>
+                  <div>
+					  <% if synergy.s_count >=6  %>
+                     <img src="<%= asset_path("dragon4.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <%= synergy.s_count %><span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=5 %>
+                     <img src="<%= asset_path("dragon3.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>1▶2▶3▶4▶</span>5<span class ='count_layer'>▶6</span>
+                  <% elsif synergy.s_count >=2 %>
+                     <img src="<%= asset_path("dragon2.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     <span class ='count_layer'>1▶</span>2<span class ='count_layer'>▶5▶6</span>
+                  <% elsif synergy.s_count >=1 %>
+                     <img src="<%= asset_path("dragon1.png") %>" alt="" width="30"/>
+                     <%= synergy.s_name %>
+                     <span class = 'count_box'>
+                     <span class = 'count_n'>
+                        <%= synergy.s_count %>
+                     </span>
+                     </span>
+                     <span class='blank'>"    "</span>
+                     1<span class ='count_layer'>▶2▶5▶6</span>
+                  <% end %>
+		  </div>   
+               <% end %>
+            <% end %>
+         <% end %>
+
+         
+      </div>
+      
+      
+
+      <div class="container" id='container'>
+        <div class="champhion-slot" id = 'cham'>
+			 <% @num.each do |num| %>
+				<div class="item"+<% num %> onclick="delete1(<%= num %>)" ondrop="drop(event)" ondragover="allowDrop(event)">
+					<% if @tool_lists[num] %>
+						<%= image_tag(Character.find(@tool_lists[num].character_id).avatar.url,
+							id: 100*(1+num)	,draggable: "true", ondragstart: "drag(event)") %>
+					<% end %>
+					<div class="godestroy">
+						<%= button_to 'Destroy',
+							@tool_lists[num],
+							method: :delete,
+							:form => { :id => num },
+							remote: true %>
+					</div>
+				</div>
+			 <% end %>
+
+         
+         
+        </div>
+      </div>
+   </div>
 	
 	<div class="c_container">
 		
-			<h2>시너지</h2>
-			적용 시너지 : <% @tool_synergy.each do |s| %>
-			  <tr>
-				<td><%= s %></td>
-			  </tr>
-			<% end %>
-			<br/>
-
-			<% @synergies.each do |synergy| %>
-				<% if synergy.s_count > 0 %>
-					<%= synergy.s_name %>
-					<%= synergy.s_count %>
-				<% end %>
-			<% end %>
-
-			<table>
-			  <thead>
-				<tr>
-				  <th>Character</th>
-				  <th colspan="3"></th>
-				</tr>
-			  </thead>
-
-			  <tbody>
-				<% @tool_lists.each do |tool| %>
-				  <tr>
-					<td><%= Character.find(tool.character_id).name %></td>
-					<td><%= image_tag(Character.find(tool.character_id).avatar.url) %></td>
-					<td><%= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-				  </tr>
-				<% end %>
-			  </tbody>
-			</table>
-
-			<br>
-
+			
+			
 
 			<h1>캐릭터</h1>
+			<button onclick='sortTable(0)'>이름 순</button>
+			<button onclick='sortTable(1)'>가격 순</button>
+			<button onclick='sortTable(2)'>시너지 별</button>
 
-			<table id='inventory' class='width ="1500" height="1000" align = "center"'>
-			  <thead>
-				<tr>
-				  <th onclick='sortTable(0)'>이름 순</th>
-				  <th onclick='sortTable(1)'>가격 순</th>
-				  <th onclick='sortTable(2)'>시너지 별</th>
-				  <th colspan="3"></th>
-				</tr>
-			  </thead>		
-			  <tbody>
+			<table id='inventory' class='width:"1500" height="1000"' align = "center">
+			  <tbody class="tbody">
 				<% @characters.each do |character| %>
-				  <tr>
-					<td class="c_name"><%= character.name %></td>
-					<td class="c_cost"><%= character.cost %></td>
-					<td><%= image_tag(character.avatar.url) %></td>
-					<td><%= button_to "툴에 넣기", tools_path(tool: { character_id: character.id}) %></td>
-				  </tr>
+					<tr>
+						<td>
+							<div class="tft-champion">
+								<span class="c_name"><%= character.name %></span>
+								<span class="c_cost"><%= character.cost %>$</span>
+								<div id="c_img<%= character %>" onclick="go('<%= character %>')"><%= image_tag(character.avatar.url) %></div>
+							</div>
+							<div class="gotool" style="visibility: hidden;">
+								<%= button_to "툴에 넣기", 
+								tools_path(tool: { character_id: character.id}), 
+								:form => { :id => character },
+								remote: true %>
+							</div>
+						</td>
+					</tr>  
 				<% end %>
 			  </tbody>
-			</table>
+			</table> 
 
 			<br>
 
-			<%= link_to 'New Character', new_character_path %>
-
-			<h1>Synergies</h1>
-
-			<table>
-			  <thead>
-				<tr>
-				  <th>S name</th>
-				  <th colspan="3"></th>
-				</tr>
-			  </thead>
-
-			  <tbody>
-				<% @synergies.each do |synergy| %>
-				  <tr>
-					<td><%= synergy.s_name %></td>
-					<td><%= link_to 'Show', synergy %></td>
-					<td><%= link_to 'Edit', edit_synergy_path(synergy) %></td>
-					<td><%= link_to 'Destroy', synergy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-				  </tr>
-				<% end %>
-			  </tbody>
-			</table>
-
-			<br>
-
-			<%= link_to 'New Synergy', new_synergy_path %>
+			
 	</div>
 	
     <script
@@ -207,16 +1157,43 @@
 
 
 
+	<!-- function go(c) {
+		var parent = document.querySelector(".item"+i);
+		var test = document.getElementById('c_img'+c);
+		var test1 = test.cloneNode(true);
+		parent.appendChild(test1);
+		i = i+1;
+		return i
+	} -->
 
+<script>
+	var i = 1
+	function go(character) {
+		document.getElementById(character)[0].click();
+	}
+	
+	function delete1(num){
+		var a = String(num);
+		document.getElementById(a)[1].click();
+	}
+	
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
 
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+	}
 
+	function drop(ev) {
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		ev.target.appendChild(document.getElementById(data));
+	}
+</script>
 
 
 <script>
-	function gotool(c){
-		console.log(c)
-	}
-	
 	function sortTable(n) {
 		var table, rows, switching, o, x, y, shouldSwitch, dir, switchcount = 0;
 			table = document.getElementById("inventory");
@@ -227,10 +1204,10 @@
 			switching = false;
 			rows = table.getElementsByTagName('TR');
 
-			for (o = 1; o < (rows.length - 1); o++){
+			for (o = 0; o < (rows.length - 1); o++){
 				shouldSwitch = false;
-				x = rows[o].getElementsByTagName('TD')[n];
-				y = rows[o+1].getElementsByTagName('TD')[n];
+				x = rows[o].getElementsByTagName('SPAN')[n];
+				y = rows[o+1].getElementsByTagName('SPAN')[n];
 
 				if (dir == 'asc') {
 					if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {

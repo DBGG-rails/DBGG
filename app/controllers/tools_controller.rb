@@ -50,11 +50,11 @@ class ToolsController < ApplicationController
   # DELETE /tools/1 or /tools/1.json
   def destroy
     @tool.destroy
-
     respond_to do |format|
       format.html { redirect_to characters_url, notice: "삭제 하였습니다." }
       format.json { head :no_content }
     end
+	  
   end
 
   private
