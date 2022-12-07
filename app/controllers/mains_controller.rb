@@ -4,7 +4,11 @@ class MainsController < ApplicationController
   # GET /mains or /mains.json
   def index
     @mains = Main.all
+	
+	
   end
+	
+
 
   # GET /mains/1 or /mains/1.json
   def show
