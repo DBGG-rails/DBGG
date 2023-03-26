@@ -65,7 +65,7 @@
   height : 50px;
   width: 250px;
   left: 50%;
-  top : 5.5%;
+  top : 7%;
   transform: translate(-50%, 0%);
 }
 
@@ -371,12 +371,13 @@ textarea{
 #aa{
 	position: absolute;
 	left: 65%;
-
+	padding-top : 10px;
 }
 
 #aa > a{
 	text-decoration: none;
 	color: white;
+	
 }
 .log{
 	height: 100vh;
@@ -406,4 +407,10 @@ a:visited{
 
 .log > h2{
 	padding-top : 50px;
+}
+.dropdown-item{
+	color : black;
+}
+.dropdown-itme:visited{
+	color : black;
 }
